@@ -1,0 +1,46 @@
+def initPrint():
+    print(" x  -------------------------------------------------------------------------------- sin(x)")
+
+def transform(degree):
+    textDegree = str(degree)
+    temp = ""
+    for i in range(3-len(textDegree)):
+        temp+="0"
+    temp+=textDegree
+
+    return temp
+
+def starPrint(lenBlank, result):
+    for i in range(lenBlank):
+        if i == blankCenter: print("|",end="")
+        else: print(" ",end="")
+    
+    print("*",end="")
+    
+    if result >= -10e-6 : 
+        for i in range(2*blankCenter-lenBlank):
+            print(" ",end="")
+        print(" ", end="")
+
+    else:
+        for i in range(blankCenter-lenBlank-1):
+            print(" ",end="")
+        print("|",end="")  
+        for i in range(blankCenter):
+            print(" ",end="") 
+
+initPrint()
+
+
+def print_sin(startDegree,endDegree,blankCenter):
+    for degree in range(startDegree, endDegree, 10):
+        textDegree = transform(degree)
+        value = math.radians(degree)
+        result = math.sin(value)
+        lenBlank = int(result*blankCenter) + blankCenter
+        
+        print(textDegree,end="")
+
+        starPrint(lenBlank, result)
+        
+        print("{:.3f}".format(result))
